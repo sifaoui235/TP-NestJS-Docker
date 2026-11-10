@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe, } from '@nestjs/common';
+import { Controller, Get, Post, Body, } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { OrdersService } from './orders.service.js';
 import { CreateOrderDto } from './dto/create-order.dto.js';
@@ -22,11 +22,8 @@ let OrdersController = class OrdersController {
     create(dto) {
         return this.ordersService.create(dto);
     }
-    findOne(id) {
-        return this.ordersService.findOne(id);
-    }
-    remove(id) {
-        return this.ordersService.remove(id);
+    findAll() {
+        return this.ordersService.findAll();
     }
 };
 __decorate([
@@ -37,19 +34,11 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "create", null);
 __decorate([
-    Get(':id'),
-    __param(0, Param('id', ParseIntPipe)),
+    Get(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], OrdersController.prototype, "findOne", null);
-__decorate([
-    Delete(':id'),
-    __param(0, Param('id', ParseIntPipe)),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], OrdersController.prototype, "remove", null);
+], OrdersController.prototype, "findAll", null);
 OrdersController = __decorate([
     ApiTags('orders'),
     Controller('orders'),
