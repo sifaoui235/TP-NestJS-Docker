@@ -38,7 +38,7 @@ __decorate([
 __decorate([
     ManyToOne(() => Client, (c) => c.orders, { onDelete: 'RESTRICT' }),
     JoinColumn({ name: 'clientId' }),
-    __metadata("design:type", Client)
+    __metadata("design:type", Object)
 ], CustomerOrder.prototype, "client", void 0);
 __decorate([
     Column(),
@@ -46,7 +46,7 @@ __decorate([
 ], CustomerOrder.prototype, "clientId", void 0);
 __decorate([
     OneToMany(() => OrderItem, (i) => i.order),
-    __metadata("design:type", Array)
+    __metadata("design:type", Object)
 ], CustomerOrder.prototype, "items", void 0);
 CustomerOrder = __decorate([
     Entity('customer_orders')

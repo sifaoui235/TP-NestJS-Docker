@@ -46,7 +46,7 @@ __decorate([
 ], Product.prototype, "categoryId", void 0);
 __decorate([
     OneToMany(() => OrderItem, (item) => item.product),
-    __metadata("design:type", Array)
+    __metadata("design:type", Object)
 ], Product.prototype, "items", void 0);
 Product = __decorate([
     Entity('products')

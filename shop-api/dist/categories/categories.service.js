@@ -10,34 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Category } from './entities/category.entity.js';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Category } from "./entities/category.entity.js";
 let CategoriesService = class CategoriesService {
     repo;
     constructor(repo) {
         this.repo = repo;
     }
-    create(dto) {
-        return this.repo.save(this.repo.create(dto));
-    }
-    findAll() {
-        return this.repo.find();
-    }
+    create(dto) { return this.repo.save(this.repo.create(dto)); }
+    findAll() { return this.repo.find({ relations: { products: true } }); }
     async findOne(id) {
-        const category = await this.repo.findOneBy({ id });
-        if (!category)
-            throw new NotFoundException(`Category ${id} not found`);
-        return category;
-    }
-    async update(id, dto) {
-        const category = await this.findOne(id);
-        return this.repo.save({ ...category, ...dto });
-    }
-    async remove(id) {
-        const category = await this.findOne(id);
-        return this.repo.remove(category);
+        const c = await this.repo.findOne({
+            where: { id },
+            relations: { products: true }
+        });
+        if (!c)
+            throw new NotFoundException('Categorie introuvable');
+        return c;
     }
 };
 CategoriesService = __decorate([

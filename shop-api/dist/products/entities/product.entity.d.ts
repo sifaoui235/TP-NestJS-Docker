@@ -8,5 +8,5 @@ export declare class Product {
     stock: number;
     category: Relation<Category>;
     categoryId: number;
-    items: OrderItem[];
+    items: Relation<OrderItem[]>;
 }

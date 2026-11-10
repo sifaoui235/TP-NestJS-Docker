@@ -10,11 +10,8 @@ import { CategoriesModule } from '../categories/categories.module.js';
 
 @Module({
   imports: [
-    // ... ConfigModule, TypeOrmModule.forRoot(...)
-    CategoriesModule,
-    ProductsModule,
-    ClientsModule,
-    OrdersModule,
+    TypeOrmModule.forFeature([Product, Category]),
   ],
- controllers: [ProductsController], providers: [ProductsService],
+ controllers: [ProductsController],
+  providers: [ProductsService],
 }) export class ProductsModule {}

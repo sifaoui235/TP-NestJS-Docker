@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, } from 'typeorm';
 import { CustomerOrder } from '../../orders/entities/order.entity.js';
 let Client = class Client {
     id;
@@ -29,7 +29,7 @@ __decorate([
 ], Client.prototype, "email", void 0);
 __decorate([
     OneToMany(() => CustomerOrder, (o) => o.client),
-    __metadata("design:type", Array)
+    __metadata("design:type", Object)
 ], Client.prototype, "orders", void 0);
 Client = __decorate([
     Entity('clients')

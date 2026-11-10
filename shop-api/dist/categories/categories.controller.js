@@ -10,11 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe, } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service.js';
 import { CreateCategoryDto } from './dto/create-category.dto.js';
-import { UpdateCategoryDto } from './dto/update-category.dto.js';
 let CategoriesController = class CategoriesController {
     categoriesService;
     constructor(categoriesService) {
@@ -28,12 +27,6 @@ let CategoriesController = class CategoriesController {
     }
     findOne(id) {
         return this.categoriesService.findOne(id);
-    }
-    update(id, dto) {
-        return this.categoriesService.update(id, dto);
-    }
-    remove(id) {
-        return this.categoriesService.remove(id);
     }
 };
 __decorate([
@@ -56,21 +49,6 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], CategoriesController.prototype, "findOne", null);
-__decorate([
-    Patch(':id'),
-    __param(0, Param('id', ParseIntPipe)),
-    __param(1, Body()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, UpdateCategoryDto]),
-    __metadata("design:returntype", void 0)
-], CategoriesController.prototype, "update", null);
-__decorate([
-    Delete(':id'),
-    __param(0, Param('id', ParseIntPipe)),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], CategoriesController.prototype, "remove", null);
 CategoriesController = __decorate([
     ApiTags('categories'),
     Controller('categories'),

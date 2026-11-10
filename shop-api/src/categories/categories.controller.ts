@@ -33,16 +33,5 @@ export class CategoriesController {
     return this.categoriesService.findOne(id);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() dto: UpdateCategoryDto,
-  ) {
-    return this.categoriesService.update(id, dto);
-  }
 
-  @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.categoriesService.remove(id);
-  }
 }

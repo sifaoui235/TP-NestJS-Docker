@@ -12,5 +12,5 @@ export class Product {
   @ManyToOne(() => Category, (c) => c.products, { onDelete: 'RESTRICT' })
   @JoinColumn({ name: 'categoryId' }) category: Relation<Category>;
   @Column() categoryId: number;
-  @OneToMany(() => OrderItem, (item) => item.product) items: OrderItem[];
+  @OneToMany(() => OrderItem, (item) => item.product) items: Relation<OrderItem[]>;
 }

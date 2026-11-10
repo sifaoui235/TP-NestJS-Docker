@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Client } from './entities/client.entity.js';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Client } from "./entities/client.entity.js";
 let ClientsService = class ClientsService {
     repo;
     constructor(repo) {
@@ -22,22 +22,12 @@ let ClientsService = class ClientsService {
     create(dto) {
         return this.repo.save(this.repo.create(dto));
     }
-    findAll() {
-        return this.repo.find();
-    }
+    findAll() { return this.repo.find(); }
     async findOne(id) {
-        const client = await this.repo.findOne({ where: { id }, relations: { orders: true } });
-        if (!client)
-            throw new NotFoundException(`Client ${id} not found`);
-        return client;
-    }
-    async update(id, dto) {
-        const client = await this.findOne(id);
-        return this.repo.save({ ...client, ...dto });
-    }
-    async remove(id) {
-        const client = await this.findOne(id);
-        return this.repo.remove(client);
+        const c = await this.repo.findOneBy({ id });
+        if (!c)
+            throw new NotFoundException('Client introuvable');
+        return c;
     }
 };
 ClientsService = __decorate([
